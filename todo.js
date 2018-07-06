@@ -46,16 +46,22 @@ window.onload = function(){
 
     //修改
     var oB = document.getElementsByTagName("b")
-    for(var i=0;i<oB.length;i++){
+    for(var i=1;i<oB.length;i++){
+        oB[i].index = i;
         oB[i].onclick = function(){
-            
+            var num = this.index;
+            var key = localStorage.key(num)
+            var value = todoIpt.value
+            localStorage.setItem(key, value)
+            location.reload()
         }
     }
 
-
+    //添加待办事项
     saveIpt.onclick = function(){
         addtodo();
     }
+    //删除全部
     clearIpt.onclick = function(){
         localStorage.clear()
         location.reload();
