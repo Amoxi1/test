@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="layout">
+        <div class="head">待办事项</div>
+        <h1 class="con">
+            <span class="add"> + </span>
+            <input type="text" placeholder="请输入待办事项" id="todoValue" />
+            <input type="button" value="提交" id="send"/>
+            <input type="button" value="全部删除" id="clear"/>
+        </h1>
+        <div class="list">
+            <h2>进行中...</h2>
+            <ul class="todolist">
+            </ul>
+        </div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>

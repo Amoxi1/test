@@ -1,0 +1,89 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+}
+ul li,ol li{
+    list-style: none;
+}
+.layout{
+    width:600px;
+    margin:20px auto;
+    border: #d1d1d1;
+}
+.head{
+    width:600px;
+    height: 30px;
+    line-height: 30px;
+    background:#0bc84e;
+    color:#fff;
+    font-size:18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.con{
+    width: 600px;
+    height:40px;
+    line-height: 40px;
+    margin-bottom:25px;
+}
+.add{
+    position: relative;
+    left: 40px;
+    top: 5px;
+}
+#todoValue{
+    width:400px;
+    height:40px;
+    line-height: 40px;
+    border-radius: 5px;
+    outline-style: none ;
+	outline-width: 0px ;
+	border-style: none ;
+	text-shadow: none ;
+	-webkit-appearance: none ;
+	-webkit-user-select: text ;
+	outline-color: transparent ;
+    box-shadow: none;
+    border: 1px #ddd solid ;
+    text-align: center;
+}
+#send,#clear{
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    outline-style: none ;
+	outline-width: 0px ;
+	text-shadow: none ;
+	-webkit-appearance: none ;
+	-webkit-user-select: text ;
+	outline-color: transparent ;
+    box-shadow: none;
+}
+.list{
+    width:600px;
+}
+.list h2{
+    margin-bottom:10px;
+}
+.list ul{
+    float: left;
+    border:1px #d1d1d1 double;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding:0 5px;
+}
+.todolist li{
+    float: left;
+    width:600px;
+    height:40px;
+    line-height: 40px;
+}
+.todolist li b,.todolist li i{
+    float:right;
+    font-style: normal; 
+    width:40px;
+    height:40px; 
+    text-align: center;
+    margin-right: 5px;  
+}
