@@ -3,10 +3,10 @@ window.onload = function(){
     var saveIpt = document.getElementById("send");
     var clearIpt = document.getElementById("clear");
 
-    CreateList();
+    createList();
 
     //储存用户输入值
-    function addtodo(){
+    function addTodo(){
         var todoValue = todoIpt.value ;
         if(!todoValue){
             alert("输入不可为空")
@@ -19,7 +19,7 @@ window.onload = function(){
         
     }
     //渲染待办事项列表
-    function CreateList(){
+    function createList(){
         var todoList = document.getElementsByClassName("todolist")[0];
         todoList.innerHTML = '' ;
         for(var i=0;i<localStorage.length;i++){
@@ -33,9 +33,9 @@ window.onload = function(){
 
     }
     //删除单个
-    var oI =document.getElementsByTagName('i')
-    for(var i=0;i<oI.length;i++){
-        oI[i].onclick = (function(n){
+    var elRemove =document.getElementsByTagName('i')
+    for(var i=0;i<elRemove.length;i++){
+        elRemove[i].onclick = (function(n){
             return function(){
                 var keys = localStorage.key(n);
                 localStorage.removeItem(keys);
@@ -45,21 +45,34 @@ window.onload = function(){
     }
 
     //修改
-    var oB = document.getElementsByTagName("b")
-    for(var i=1;i<oB.length;i++){
-        oB[i].index = i;
-        oB[i].onclick = function(){
+    var valueChange = document.getElementsByTagName("b")
+    for(var i=0;i<valueChange.length;i++){
+        valueChange[i].index = i;
+        valueChange[i].onclick = function(){
             var num = this.index;
             var key = localStorage.key(num)
             var value = todoIpt.value
-            localStorage.setItem(key, value)
-            location.reload()
+            if(!value){
+                alert("修改内容不可为空")
+            }else{
+                localStorage.setItem(key, value)
+                location.reload()
+            }
+            
         }
     }
 
     //添加待办事项
     saveIpt.onclick = function(){
-        addtodo();
+        addTodo();
+    }
+
+    //回车添加事项
+    todoIpt.onkeydown = function(e){
+        var e = e ||window.event;
+        if(e.keyCode == 13){
+            addTodo();            
+        }
     }
     //删除全部
     clearIpt.onclick = function(){
