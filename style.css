@@ -99,9 +99,9 @@ ul li,ol li{
     margin: 5px 0;
     position: relative;
 }
-.list ul li span,.list ul li input{
+.list ul li span{
     float: left;
-    width: 200px;
+    width: 380px;
     height:30px;
     line-height: 30px;
 }
@@ -110,11 +110,11 @@ ul li,ol li{
     float:left;
     font-style: normal; 
     font-weight:normal;
-    width:40px;
+    width:60px;
     height:40px; 
     text-align: center;
     margin-right: 5px;  
 }
-.todolist .finished{
+.list ul li p{
     font-weight: bold;
 }
