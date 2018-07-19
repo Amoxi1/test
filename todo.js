@@ -1,20 +1,69 @@
-   var tabnav = document.querySelector(".nav");
+    var tabnav = document.querySelector(".nav");
     var alltitle = tabnav.querySelectorAll("li");
     var content = document.querySelector(".list");
     var allConent = content.querySelectorAll("ul");
+    var curTarget,t;
+    var allList = document.querySelector("#alllist");    
+    var todolist = document.querySelector("#todolist");
+    var donelist = document.querySelector("#donelist");
     //tab切换
-    for(var i=0;i<alltitle.length;i++){
-        alltitle[i].index = i;
-        alltitle[i].onclick = function(){
-            for(var j=0;j<alltitle.length;j++){
-                alltitle[j].className = '';
-                allConent[j].className = 'hide';
+    // for(var i=0;i<alltitle.length;i++){
+    //     alltitle[i].index = i;
+    //     alltitle[i].onclick = function(){
+    //         for(var j=0;j<alltitle.length;j++){
+    //             alltitle[j].className = '';
+    //             allConent[j].className = 'hide';
+    //         }
+    //         alltitle[this.index].className = 'selected';
+    //         allConent[this.index].className = '';
+    //     }
+    // }
+    tabnav.addEventListener('click',function(e){
+        e = e || window.event
+        e.target = e.target || e.srcElement
+        if(e.target.tagName.toLowerCase() === 'li'){
+            if(e.target.id === curTarget){
+                return false;
             }
-            alltitle[this.index].className = 'selected';
-            allConent[this.index].className = '';
+            for(var i=0;i<alltitle.length;i++){
+                alltitle[i].className = '';
+                allConent[i].className = 'hide';
+            }
+            t = setTimeout(function(){
+                if(e.target.id=="all"){
+                    e.target.className = "selected";
+                    todo.style.className = '';
+                    done.style.className = '';
+                    allList.style.display = 'block';
+                    todolist.style.display = 'none';
+                    donelist.style.display = 'none'
+                    curTarget = e.target.id;
+                    return;
+                }
+                if(e.target.id == "todo"){
+                    e.target.className = "selected";
+                    all.style.className = '';
+                    done.style.className = '';
+                    allList.style.display = 'none';
+                    todolist.style.display = 'block';
+                    donelist.style.display = 'none'
+                    curTarget = e.target.id;
+                    return;
+                }
+                if(e.target.id == "done"){
+                    e.target.className = "selected";
+                    todo.style.className = '';
+                    done.style.className = '';
+                    allList.style.display = 'none';
+                    todolist.style.display = 'none';
+                    donelist.style.display = 'block'
+                    curTarget = e.target.id;
+                    return;
+                }
+            },0)
         }
+    })
 
-    }
 
     var todoIpt = document.querySelector("#todoValue");
     var send = document.querySelector("#send");
@@ -43,9 +92,6 @@
 
     //渲染列表
     function createList(){
-        var allList = document.querySelector("#alllist");    
-        var todolist = document.querySelector("#todolist");
-        var donelist = document.querySelector("#donelist");
         //var allHtml = "";
         var todoHtml = "";
         var doneHtml = "";
@@ -56,13 +102,12 @@
                 if(!todoListArray[i].done){//未完成
                     todoHtml +="<li><span>内容" + todoListArray[i].todo + "</span><b onclick='edit("+i+")'>修改</b><i class='delete' onclick='remove("+i+")'>删除</i><p class='status' onclick='changeStatus("+i+", \"done\", true)'>待完成</p></li>"
                 }else{
-                    doneHtml +="<li><span>内容" + todoListArray[i].todo + "</span><b>修改</b><i class='delete' onclick='remove("+i+")'>删除</i><p class='status'>已完成</p></li>"
+                    doneHtml +="<li><span>内容" + todoListArray[i].todo + "</span><b>修改</b><i class='delete' onclick='remove("+i+")'>删除</i><p class='status' onclick='changeStatus("+i+",\"done\",false)'>已完成</p></li>"
                 }
             }
             todolist.innerHTML = todoHtml
             donelist.innerHTML = doneHtml
             allList.innerHTML = todoHtml + doneHtml
-
         }else{
             allList.innerHTML = "";
             todolist.innerHTML =  "";
